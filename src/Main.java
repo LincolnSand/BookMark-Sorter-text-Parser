@@ -8,7 +8,7 @@ import java.util.Scanner;
 
 public class Main {
 
-    private final String[] keywords = {"haskell", "perl", "rust"};
+    private final String[] keywords = {"haskell", "machine learning", "bios", "operating system", "linux"};
     private String[] keywordFileNames = new String[keywords.length];
     private File[] keywordFiles = new File[keywords.length];
     private File elseFile;
