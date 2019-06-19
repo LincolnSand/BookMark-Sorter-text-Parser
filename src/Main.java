@@ -119,7 +119,7 @@ public class Main {
 		Writer out;
 		try {
 			out = new FileWriter(inputFileName, true);
-			out.write("End Of File" + '\n'); //Write the string to the file
+			out.write('\n' + "End Of File" + '\n'); //Write the string to the file
 			out.flush();
 			out.close(); //Close the file
 		} catch (Exception e) {
@@ -132,7 +132,7 @@ public class Main {
 			Writer out;
 			try {
 				out = new FileWriter(fileName, true);
-				out.write("End Of File" + '\n'); //Write the string to the file
+				out.write('\n' + "End Of File" + '\n'); //Write the string to the file
 				out.flush();
 				out.close(); //Close the file
 			} catch (Exception e) {
