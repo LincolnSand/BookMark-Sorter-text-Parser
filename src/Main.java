@@ -13,11 +13,12 @@ public class Main {
     private File[] keywordFiles = new File[keywords.length];
     private File elseFile;
     private final String elseFileName = "src/else.html";
+    private final String inputFileName = "src/input.html";
 
     private Scanner questionScanner;
     {
         try {
-            questionScanner = new Scanner(new File("src/input.html"));
+            questionScanner = new Scanner(new File(inputFileName));
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
@@ -28,6 +29,9 @@ public class Main {
     }
 
     private Main(){
+
+        init();
+
         try {
             fileCreator();
         } catch (IOException e) {
@@ -39,13 +43,15 @@ public class Main {
         System.out.println();
 
         readerAndWriter();
+
+        endOfFileAdder();
     }
 
     private void readerAndWriter(){
-        String line;
+        String line = "";
         int lineNumber = 1;
         boolean fitsKeyword = false;
-        do {
+        while(!line.equals("End Of File")) {
             fitsKeyword = false;
             line = questionScanner.nextLine();
             //System.out.println(line + " at " + lineNumber);
@@ -77,7 +83,7 @@ public class Main {
                     e.printStackTrace();
                 }
             }
-        }while(!line.equals("</html>"));
+        }
     }
 
     private boolean stringChecker(String line, String keyword){
@@ -108,5 +114,31 @@ public class Main {
             System.out.println("File " + elseFileName + " already exists");
         }
     }
+
+    private void init(){
+		Writer out;
+		try {
+			out = new FileWriter(inputFileName, true);
+			out.write("End Of File" + '\n'); //Write the string to the file
+			out.flush();
+			out.close(); //Close the file
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
+	private void endOfFileAdder(){
+		for(String fileName : keywordFileNames){
+			Writer out;
+			try {
+				out = new FileWriter(fileName, true);
+				out.write("End Of File" + '\n'); //Write the string to the file
+				out.flush();
+				out.close(); //Close the file
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+	}
 
 }
