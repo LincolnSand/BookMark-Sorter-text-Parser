@@ -51,7 +51,7 @@ public class Main {
         String line = "";
         int lineNumber = 1;
         boolean fitsKeyword = false;
-        while(!line.equals("End Of File")) {
+        do{
             fitsKeyword = false;
             line = questionScanner.nextLine();
             //System.out.println(line + " at " + lineNumber);
@@ -83,7 +83,7 @@ public class Main {
                     e.printStackTrace();
                 }
             }
-        }
+        }while(!line.equals("End Of File")); 
     }
 
     private boolean stringChecker(String line, String keyword){
